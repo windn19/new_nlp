@@ -1,0 +1,8 @@
+transformers
+sentencepiece
+sacremoses
+tensorflow
+torch
+fastapi
+uvicorn
+pytest
