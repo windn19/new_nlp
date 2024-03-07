@@ -7,20 +7,20 @@ client = TestClient(app)
 
 
 def test_read_main():
-    response = client.get('/')
+    response = client.get("/")
     assert response.status_code == 200, "Неправильный статус"
-    assert response.json() == {'message': 'Hello World!!!'}
+    assert response.json() == {"message": "Hello World!!!"}
 
 
 def test_translate_right():
-    response = client.post('/predict/', json={'text': 'I like Python'})
+    response = client.post("/predict/", json={"text": "I like Python"})
     json_data = response.json()[0]
-    assert response.status_code == 200, 'Неверный статус'
-    assert json_data['translation_text'] == 'Мне нравится Питон.'
+    assert response.status_code == 200, "Неверный статус"
+    assert json_data["translation_text"] == "Мне нравится Питон."
 
 
 def test_translate_wrong():
-    response = client.post('/predict/', json={'text': 'I like Python'})
+    response = client.post("/predict/", json={"text": "I like Python"})
     json_data = response.json()[0]
-    assert response.status_code == 200, 'Неверный статус'
-    assert json_data['translation_text'] != 'Мне нравится мир.'
+    assert response.status_code == 200, "Неверный статус"
+    assert json_data["translation_text"] != "Мне нравится мир."
